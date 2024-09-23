@@ -4,11 +4,16 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 using std::endl;
 using std::cout;
 using std::cin;
 using std::string;
 using std::vector;
+using std::setw;
+using std::setprecision;
+using std::left;
+using std::fixed;
 
 #endif // PAGRINDAS_H_INCLUDED
