@@ -1,6 +1,6 @@
 #include "pagrindas.h"
 #include "studentas.h"
-
+#include "skaiciavimai.h"
 using namespace std;
 
 int main()
@@ -18,6 +18,11 @@ int main()
         studentai.push_back(laikinas);
     }
 
-
+    for(int i=0; i<n; i++){
+        vidurkis(studentai.at(i),m);
+        galutinis(studentai.at(i));
+    }
+    isvedimasgal(studentai, n);
+    
     return 0;
 }
