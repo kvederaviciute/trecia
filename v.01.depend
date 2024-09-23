@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1727101056 source:c:\users\jovit\onedrive\desktop\projektai\v.01\main.cpp
+	"pagrindas.h"
+	"studentas.h"
+
+1727099231 c:\users\jovit\onedrive\desktop\projektai\v.01\pagrindas.h
+	<iostream>
+	<string>
+	<vector>
+
+1727101090 c:\users\jovit\onedrive\desktop\projektai\v.01\studentas.h
+	"pagrindas.h"
+
