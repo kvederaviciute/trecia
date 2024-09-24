@@ -5,6 +5,8 @@
 #include "studentas.h"
 
 void vidurkis(Stud & student, int m);
-void galutinis(Stud & student);
+void galutinisvid(Stud & student);
+void mediana(Stud & student, int m);
+void galutinismed(Stud & student);
 
 #endif // SKAICIAVIMAI_H_INCLUDED
