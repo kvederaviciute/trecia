@@ -19,7 +19,9 @@ int main()
 
     for(int i=0; i<n; i++){
         vidurkis(studentai.at(i),m);
-        galutinis(studentai.at(i));
+        galutinisvid(studentai.at(i));
+        mediana(studentai.at(i),m);
+        galutinismed(studentai.at(i));
     }
     isvedimasgal(studentai, n);
     
