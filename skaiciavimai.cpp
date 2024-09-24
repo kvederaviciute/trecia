@@ -8,7 +8,7 @@ void vidurkis(Stud & student, int m){
     student.vidurkis=sum/m;
 }
 void galutinisvid(Stud & student){
-    student.galutinis = student.vidurkis*0.4 + student.egzaminas*0.6;
+    student.galutinisvid = student.vidurkis*0.4 + student.egzaminas*0.6;
 }
 void mediana(Stud & student, int m){
     double d=2;
