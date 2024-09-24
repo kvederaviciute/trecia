@@ -6,7 +6,7 @@
 struct Stud{
     string vardas, pavarde;
     vector<int> ND;
-    double galutinis, egzaminas, vidurkis, mediana;
+    double galutinisvid, egzaminas, vidurkis, mediana,galutinismed;
 };
 
 void ivedimas(Stud & student,int m);
