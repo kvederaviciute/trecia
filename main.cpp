@@ -1,7 +1,6 @@
 #include "pagrindas.h"
 #include "studentas.h"
 #include "skaiciavimai.h"
-using namespace std;
 
 int main()
 {
