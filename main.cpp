@@ -6,17 +6,15 @@ int main()
 {
     vector<Stud> studentai;
     Stud laikinas;
-    int n,m;
+    int n, m=0;
     cout<<"Kiek studentu yra jusu kurse?: ";
     cin>>n;
-    cout<<"Kiek namu darbu uzduodate?: ";
-    cin>>m;
     for(int i=0; i<n; i++){
         cout<<"Iveskite studento duomenis: "<<endl;
-        ivedimas(laikinas,m);
+        ivedimas(laikinas, m);
         studentai.push_back(laikinas);
+        valymas(laikinas);
     }
-
     for(int i=0; i<n; i++){
         vidurkis(studentai.at(i),m);
         galutinisvid(studentai.at(i));
@@ -24,6 +22,5 @@ int main()
         galutinismed(studentai.at(i));
     }
     isvedimasgal(studentai, n);
-    
     return 0;
 }
