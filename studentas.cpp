@@ -1,24 +1,37 @@
 #include "studentas.h"
 
-void ivedimas(Stud & student, int m){
-    int nd;
+void ivedimas(Stud & student, int & m){
     cout<<"Vardas: ";
     cin>>student.vardas;
     cout<<"Pavarde: ";
     cin>>student.pavarde;
-    for(int i=0;i<m;i++){
-        cout<<i+1<<"-uju namu darbu rezultatas: ";
-        cin>>nd;
-        if(nd > 10 || nd < 0){
-            cout<<"Rezultatai turi buti desimtbaleje sistemoje!"<<endl;
-            i--;
-        }
-        else{
-            student.ND.push_back(nd);
-        }
+    if(m==0){
+        namudarbaibe(student,m);
+    }
+    else{
+        namudarbaisu(student,m);
     }
     cout<<"Egzamino rezultatas: ";
     cin>>student.egzaminas;
+}
+void namudarbaibe(Stud & student, int & m){
+    int n=0;
+    while(n!=-1){
+        cout<<"Iveskite "<<m+1<<"-uju namu darbu rezultata (noredami baigti ivedima, iveskite skaiciu -1): ";
+        cin>>n;
+        if(n!=-1){
+            student.ND.push_back(n);
+            m++;
+        }
+    }
+}
+void namudarbaisu(Stud & student, int m){
+    int n;
+    for(int i=0;i<m;i++){
+        cout<<"Iveskite "<<i+1<<"-uju namu darbu rezultata: ";
+        cin>>n;
+        student.ND.push_back(n);
+    }
 }
 void valymas(Stud & student){
     student.vardas.clear();
@@ -26,10 +39,10 @@ void valymas(Stud & student){
     student.ND.clear();
 }
 void isvedimasgal(vector<Stud> student,int n){
-    cout<<left<<setw(10)<<"Vardas "<<left<<setw(15)<<"Pavarde "<<left<<setw(15)<<"Galutinis (Vid.) "<<left<<setw(15)<<"Galutinis (Med.) "<<endl;
+    cout<<left<<setw(10)<<"Vardas "<<left<<setw(15)<<"Pavarde "<<left<<setw(18)<<"Galutinis (Vid.) "<<left<<setw(18)<<"Galutinis (Med.) "<<endl;
     cout<<"---------------------------------------------------------"<<endl;
     for(int i=0;i<n;i++){
-      cout<<left<<setw(10)<<student.at(i).vardas<<left<<setw(15)<<student.at(i).pavarde<<left<<setw(15)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(15)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
+      cout<<left<<setw(10)<<student.at(i).vardas<<left<<setw(15)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
     }
 }
 
