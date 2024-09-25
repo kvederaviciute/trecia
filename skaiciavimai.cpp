@@ -24,3 +24,4 @@ void mediana(Stud & student, int m){
 void galutinismed(Stud & student){
     student.galutinismed = student.mediana*0.4 + student.egzaminas*0.6;
 }
+
