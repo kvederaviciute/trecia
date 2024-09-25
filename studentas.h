@@ -9,7 +9,9 @@ struct Stud{
     double galutinisvid, egzaminas, vidurkis, mediana,galutinismed;
 };
 
-void ivedimas(Stud & student,int m);
+void ivedimas(Stud & student, int & m);
+void namudarbaibe(Stud & student, int & m);
+void namudarbaisu(Stud & student, int m);
 void valymas(Stud & student);
 void isvedimasgal(vector<Stud> student,int n);
 
