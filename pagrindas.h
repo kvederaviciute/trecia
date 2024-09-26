@@ -7,6 +7,7 @@
 #include <iomanip>
 #include <algorithm>
 #include <cstdlib>
+#include <fstream>
 
 using std::endl;
 using std::cout;
@@ -18,6 +19,8 @@ using std::setprecision;
 using std::left;
 using std::fixed;
 using std::sort;
-using std:rand;
+using std::rand;
+using std::ifstream;
+using std::istringstream;
 
 #endif // PAGRINDAS_H_INCLUDED
