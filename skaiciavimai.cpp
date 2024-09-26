@@ -21,7 +21,13 @@ void mediana(Stud & student, int m){
         student.mediana = nd[m/2];
     }
 }
+
+void rikiavimas(vector<Stud>& studentai) {
+    sort(studentai.begin(), studentai.end(), [](const Stud& a, const Stud& b) {
+        return a.vardas < b.vardas;
+    });
+}
+
 void galutinismed(Stud & student){
     student.galutinismed = student.mediana*0.4 + student.egzaminas*0.6;
 }
-
