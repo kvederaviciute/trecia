@@ -4,9 +4,10 @@
 #include "pagrindas.h"
 #include "studentas.h"
 
-void vidurkis(Stud & student, int m);
+void vidurkis(Stud & student,int m);
 void galutinisvid(Stud & student);
 void mediana(Stud & student, int m);
 void galutinismed(Stud & student);
+void rikiavimas(vector<Stud>& studentai);
 
 #endif // SKAICIAVIMAI_H_INCLUDED
