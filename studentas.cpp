@@ -1,18 +1,34 @@
 #include "studentas.h"
 
 void ivedimas(Stud & student, int & m){
+    int a,d;
     cout<<"Vardas: ";
     cin>>student.vardas;
     cout<<"Pavarde: ";
     cin>>student.pavarde;
-    if(m==0){
-        namudarbaibe(student,m);
+    cout<<"Ar norite atsitiktinai generuoti rezultatus?(0 - ne, 1 - taip): ";
+    cin>>a;
+    if(a==0){
+        if(m==0){
+            namudarbaibe(student,m);
+        }
+        else{
+            namudarbaisu(student,m);
+        }
+        cout<<"Egzamino rezultatas: ";
+        cin>>student.egzaminas;
     }
     else{
-        namudarbaisu(student,m);
+        if(m==0){
+            cout<<"Kiek namu darbu norite sugeneruoti: ";
+            cin>>m;
+        }
+        for(int i=0;i<m;i++){
+            d=rand() % 10 + 1;
+            student.ND.push_back(d);
+        }
+        student.egzaminas=rand() % 10 +1;
     }
-    cout<<"Egzamino rezultatas: ";
-    cin>>student.egzaminas;
 }
 void namudarbaibe(Stud & student, int & m){
     int n=0;
@@ -45,4 +61,3 @@ void isvedimasgal(vector<Stud> student,int n){
       cout<<left<<setw(10)<<student.at(i).vardas<<left<<setw(15)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
     }
 }
-
