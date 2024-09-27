@@ -8,51 +8,84 @@ int main()
     Stud laikinas;
     string failas, eilute;
     int n, m=0,a,nd;
+
     cout<<"Ar duomenis norite nuskaityti is failo? (0 - ne, 1 - taip): ";
     cin>>a;
-    if(a==0)
+    if(std::cin.fail())
+    {
+        cout<<"Netinkamas simbolis"<<endl;
+        return(0);
+    }
+    else if(a==0)
     {
         cout<<"Kiek studentu yra jusu kurse?: ";
         cin>>n;
-        for(int i=0; i<n; i++)
+        if(std::cin.fail())
         {
-            cout<<"Iveskite studento duomenis: "<<endl;
-            ivedimas(laikinas, m);
-            studentai.push_back(laikinas);
-            valymas(laikinas);
-        }
-    }
-    else
-    {
-        cout<<"Iveskite failo pavadinima formatu pavadinimas.txt: ";
-        cin>>failas;
-        ifstream in(failas);
-        if(!in)
-        {
-            cout<<"failas nerastas"<<endl;
+            cout<<"Netinkamas simbolis"<<endl;
+            return(0);
         }
         else
         {
-            getline(in, eilute);
-            while (getline(in, eilute))
+            for(int i=0; i<n; i++)
             {
-                istringstream iss(eilute);
-
-                iss >> laikinas.vardas >> laikinas.pavarde;
-                while (iss >> nd)
-                {
-                    laikinas.ND.push_back(nd);
-                }
-                laikinas.egzaminas = laikinas.ND.back();
-                laikinas.ND.pop_back();
+                cout<<"Iveskite studento duomenis: "<<endl;
+                ivedimas(laikinas, m);
                 studentai.push_back(laikinas);
                 valymas(laikinas);
             }
         }
-        m=studentai[0].ND.size();
-        in.close();
+    }
+    else if(a==1)
+    {
+        bool failas_perskaitytas = false;
+
+        while(!failas_perskaitytas)
+        {
+            n, m, a, nd = 0;
+            cout<<"Iveskite failo pavadinima formatu pavadinimas.txt: ";
+            cin>>failas;
+            try
+            {
+
+                ifstream in(failas);
+                if(!in)
+                {
+                    cout<<"failas nerastas"<<endl;
+                    return(0);
+                }
+                else
+                {
+                    getline(in, eilute);
+                    while (getline(in, eilute))
+                    {
+                        istringstream iss(eilute);
+
+                        iss >> laikinas.vardas >> laikinas.pavarde;
+                        while (iss >> nd)
+                        {
+                            laikinas.ND.push_back(nd);
+                        }
+                        laikinas.egzaminas = laikinas.ND.back();
+                        laikinas.ND.pop_back();
+                        studentai.push_back(laikinas);
+                        valymas(laikinas);
+                    }
+                }
+                m=studentai[0].ND.size();
+                in.close();
+                failas_perskaitytas = true;
+            }
+            catch(std::exception& e)
+            {
+                cout<<"Klaida perskaitant faila"<<endl;
+
+            }
+        }
+
         n=studentai.size();
     }
+
 
     for(int i=0; i<n; i++)
     {
@@ -61,6 +94,7 @@ int main()
         mediana(studentai.at(i),m);
         galutinismed(studentai.at(i));
     }
+    rikiavimas(studentai);
     isvedimasgal(studentai, n);
     return 0;
 }
