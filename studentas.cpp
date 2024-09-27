@@ -144,10 +144,10 @@ void valymas(Stud & student)
 }
 void isvedimasgal(vector<Stud> student,int n)
 {
-    cout<<left<<setw(10)<<"Vardas "<<left<<setw(15)<<"Pavarde "<<left<<setw(18)<<"Galutinis (Vid.) "<<left<<setw(18)<<"Galutinis (Med.) "<<endl;
+    cout<<left<<setw(15)<<"Vardas "<<left<<setw(20)<<"Pavarde "<<left<<setw(18)<<"Galutinis (Vid.) "<<left<<setw(18)<<"Galutinis (Med.) "<<endl;
     cout<<"---------------------------------------------------------"<<endl;
     for(int i=0; i<n; i++)
     {
-        cout<<left<<setw(10)<<student.at(i).vardas<<left<<setw(15)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
+        cout<<left<<setw(15)<<student.at(i).vardas<<left<<setw(20)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
     }
 }
