@@ -9,6 +9,22 @@ int main()
     string failas, eilute;
     int n, m=0,a,nd;
 
+    cout<<"Ar norite generuoti failus?(0 - ne, 1 - taip): ";
+    cin>>a;
+    if(std::cin.fail())
+    {
+        cout<<"Netinkamas simbolis"<<endl;
+        return(0);
+    }
+    else if(a==1)
+    {
+        srand(time(0));
+        generavimas(1000, "studentai_1000.txt");
+        generavimas(10000, "studentai_10000.txt");
+        generavimas(100000, "studentai_100000.txt");
+        generavimas(1000000, "studentai_1000000.txt");
+        generavimas(10000000, "studentai_10000000.txt");
+    }
     cout<<"Ar duomenis norite nuskaityti is failo? (0 - ne, 1 - taip): ";
     cin>>a;
     if(std::cin.fail())
@@ -72,7 +88,6 @@ int main()
                         valymas(laikinas);
                     }
                 }
-                m=studentai[0].ND.size();
                 in.close();
                 failas_perskaitytas = true;
             }
@@ -82,7 +97,7 @@ int main()
 
             }
         }
-
+        m=studentai[0].ND.size();
         n=studentai.size();
     }
 
