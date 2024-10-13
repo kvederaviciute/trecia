@@ -22,5 +22,6 @@ using std::sort;
 using std::rand;
 using std::ifstream;
 using std::istringstream;
+using std::ofstream;
 
 #endif // PAGRINDAS_H_INCLUDED
