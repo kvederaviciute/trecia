@@ -151,3 +151,26 @@ void isvedimasgal(vector<Stud> student,int n)
         cout<<left<<setw(15)<<student.at(i).vardas<<left<<setw(20)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
     }
 }
+void generavimas(int n,string m)
+{
+    ofstream out(m);
+    int ndk = rand() % 20 + 1;
+
+    out << "Vardas Pavarde ";
+    for (int i = 1; i <= ndk; i++)
+    {
+        out << "ND" << i << " ";
+    }
+    out << "Egzaminas" << endl;
+    for (int i = 1; i <= n; i++)
+    {
+        out << "Vardas" << i << " Pavarde" << i << " ";
+        for (int j = 0; j < ndk; j++)
+        {
+            out << rand() % 10 + 1 << " ";
+        }
+        out << rand() % 10 + 1 << endl;
+    }
+
+    out.close();
+}
