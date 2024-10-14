@@ -116,5 +116,6 @@ int main()
     isvedimasgal(studentai, n, "studentai.txt");
     isvedimasgal(kietiakai, kietiakai.size(), "kietiakai.txt");
     isvedimasgal(vargsiukai, vargsiukai.size(), "vargsiukai.txt");
+    cout<<"Failai isvesti";
     return 0;
 }
