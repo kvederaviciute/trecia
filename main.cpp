@@ -4,7 +4,7 @@
 
 int main()
 {
-    vector<Stud> studentai;
+    vector<Stud> studentai,kietiakai,vargsiukai;
     Stud laikinas;
     string failas, eilute;
     int n, m=0,a,nd;
@@ -109,7 +109,12 @@ int main()
         mediana(studentai.at(i),m);
         galutinismed(studentai.at(i));
     }
+    skirstymas(studentai,kietiakai,vargsiukai);
+    rikiavimas(kietiakai);
+    rikiavimas(vargsiukai);
     rikiavimas(studentai);
-    isvedimasgal(studentai, n);
+    isvedimasgal(studentai, n, "studentai.txt");
+    isvedimasgal(kietiakai, kietiakai.size(), "kietiakai.txt");
+    isvedimasgal(vargsiukai, vargsiukai.size(), "vargsiukai.txt");
     return 0;
 }
