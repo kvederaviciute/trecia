@@ -142,13 +142,14 @@ void valymas(Stud & student)
     student.pavarde.clear();
     student.ND.clear();
 }
-void isvedimasgal(vector<Stud> student,int n)
+void isvedimasgal(vector<Stud> student,int n,string m)
 {
-    cout<<left<<setw(15)<<"Vardas "<<left<<setw(20)<<"Pavarde "<<left<<setw(18)<<"Galutinis (Vid.) "<<left<<setw(18)<<"Galutinis (Med.) "<<endl;
-    cout<<"---------------------------------------------------------"<<endl;
+    ofstream out(m);
+    out<<left<<setw(15)<<"Vardas "<<left<<setw(20)<<"Pavarde "<<left<<setw(18)<<"Galutinis (Vid.) "<<left<<setw(18)<<"Galutinis (Med.) "<<endl;
+    out<<"--------------------------------------------------------------------"<<endl;
     for(int i=0; i<n; i++)
     {
-        cout<<left<<setw(15)<<student.at(i).vardas<<left<<setw(20)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
+        out<<left<<setw(15)<<student.at(i).vardas<<left<<setw(20)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
     }
 }
 void generavimas(int n,string m)
