@@ -8,6 +8,7 @@
 #include <algorithm>
 #include <cstdlib>
 #include <fstream>
+#include <chrono>
 
 using std::endl;
 using std::cout;
