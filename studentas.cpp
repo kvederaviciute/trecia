@@ -68,7 +68,11 @@ void ivedimas(Stud & student, int & m)
             student.egzaminas=rand() % 10 +1;
         }
     }
-
+    else
+    {
+        cout<<"skaicius turi buti arba 0 arba 1"<<endl;
+        exit(1);
+    }
 
 }
 
@@ -154,6 +158,7 @@ void isvedimasgal(vector<Stud> student,int n,string m)
 }
 void generavimas(int n,string m)
 {
+    auto start = std::chrono::high_resolution_clock::now();
     ofstream out(m);
     int ndk = rand() % 20 + 1;
 
@@ -174,4 +179,9 @@ void generavimas(int n,string m)
     }
 
     out.close();
+
+    auto stop = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> duration = stop - start;
+
+    cout<<m<<" failo kurimo laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
 }
