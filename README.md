@@ -35,3 +35,7 @@ Duomenų išvedimo į failą naudojant vector bandymų rezultatai:
 
 Duomenų išvedimo į failą naudojant list bandymų rezultatai:
 ![image](https://github.com/user-attachments/assets/fac33471-c76a-4fd3-a4c2-59045494f6e4)
+
+Išvados: 
+* Naudojant list konteinerį duomenų rūšiavimas atliekamas ~3,5 karto sparčiau nei su vector
+* Daugėjant duomenų kiekiui list konteinerio išvedimo į failą sparta sumažėja ir tampa lėtesnė už vector
