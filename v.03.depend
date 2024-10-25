@@ -1,0 +1,30 @@
+# depslib dependency file v1.0
+1729876842 source:c:\users\jovit\onedrive\desktop\projektai\v.03\main.cpp
+	"pagrindas.h"
+	"studentas.h"
+	"skaiciavimai.h"
+
+1729875379 c:\users\jovit\onedrive\desktop\projektai\v.03\pagrindas.h
+	<iostream>
+	<string>
+	<vector>
+	<iomanip>
+	<algorithm>
+	<cstdlib>
+	<fstream>
+	<chrono>
+	<list>
+
+1729876301 c:\users\jovit\onedrive\desktop\projektai\v.03\studentas.h
+	"pagrindas.h"
+
+1729876301 c:\users\jovit\onedrive\desktop\projektai\v.03\skaiciavimai.h
+	"pagrindas.h"
+	"studentas.h"
+
+1729877177 source:c:\users\jovit\onedrive\desktop\projektai\v.03\skaiciavimai.cpp
+	"skaiciavimai.h"
+
+1729877024 source:c:\users\jovit\onedrive\desktop\projektai\v.03\studentas.cpp
+	"studentas.h"
+
