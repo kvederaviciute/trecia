@@ -7,6 +7,7 @@ void ivedimas(Stud & student, int & m)
     cin>>student.vardas;
     cout<<"Pavarde: ";
     cin>>student.pavarde;
+    cout <<"Studento saugojamo atmintyje adresas: "<< &student <<endl;
     cout<<"Ar norite atsitiktinai generuoti rezultatus?(0 - ne, 1 - taip): ";
     cin>>a;
     if(cin.fail())
