@@ -35,13 +35,6 @@ void rikiavimas(vector<Stud>& studentai)
         return a.vardas < b.vardas;
     });
 }
-void rikiavimasl(list<Stud>& studentai)
-{
-    studentai.sort([](const Stud& a, const Stud& b) {
-        return a.vardas < b.vardas;
-    });
-}
-
 void galutinismed(Stud & student)
 {
     student.galutinismed = student.mediana*0.4 + student.egzaminas*0.6;
@@ -58,16 +51,6 @@ void skirstymas(vector<Stud> s, vector<Stud>& k, vector<Stud>& v)
         }
         else
         {
-            k.push_back(l);
-        }
-    }
-}
-void skirstymasl(list<Stud> s, list<Stud>& k, list<Stud>& v)
-{
-for (const auto& l : s) {
-        if (l.galutinisvid < 5) {
-            v.push_back(l);
-        } else {
             k.push_back(l);
         }
     }
