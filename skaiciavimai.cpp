@@ -39,19 +39,11 @@ void galutinismed(Stud & student)
 {
     student.galutinismed = student.mediana*0.4 + student.egzaminas*0.6;
 }
-void skirstymas(vector<Stud> s, vector<Stud>& k, vector<Stud>& v)
-{
-    Stud l;
-    for(int i=0; i<s.size(); i++)
-    {
-        l = s.at(i);
-        if(l.galutinisvid<5)
-        {
-            v.push_back(l);
-        }
-        else
-        {
-            k.push_back(l);
-        }
-    }
+void skirstymas(std::vector<Stud>& studentai, std::vector<Stud>& vargsiukai) {
+    auto it = std::remove_if(studentai.begin(), studentai.end(), [](const Stud& student) {
+        return student.galutinisvid < 5;
+    });
+    vargsiukai.insert(vargsiukai.end(), it, studentai.end());
+
+    studentai.erase(it, studentai.end());
 }
