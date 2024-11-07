@@ -7,7 +7,6 @@ void ivedimas(Stud & student, int & m)
     cin>>student.vardas;
     cout<<"Pavarde: ";
     cin>>student.pavarde;
-    cout <<"Studento saugojamo atmintyje adresas: "<< &student <<endl;
     cout<<"Ar norite atsitiktinai generuoti rezultatus?(0 - ne, 1 - taip): ";
     cin>>a;
     if(cin.fail())
@@ -74,7 +73,7 @@ void ivedimas(Stud & student, int & m)
         cout<<"skaicius turi buti arba 0 arba 1"<<endl;
         exit(1);
     }
-
+    cout <<"Studento saugojamo atmintyje adresas: "<< &student <<endl;
 }
 
 void namudarbaibe(Stud & student, int & m)
@@ -155,24 +154,6 @@ void isvedimasgal(vector<Stud> student,int n,string m)
     for(int i=0; i<n; i++)
     {
         out<<left<<setw(15)<<student.at(i).vardas<<left<<setw(20)<<student.at(i).pavarde<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinisvid<<left<<setw(18)<<fixed<<setprecision(2)<<student.at(i).galutinismed<<endl;
-    }
-}
-void isvedimasgall(list<Stud> student,int n,string m)
-{
-ofstream out(m);
-    out << left << setw(15) << "Vardas "
-        << left << setw(20) << "Pavarde "
-        << left << setw(18) << "Galutinis (Vid.) "
-        << left << setw(18) << "Galutinis (Med.) " << endl;
-    out << "--------------------------------------------------------------------" << endl;
-    int count = 0;
-    for (const auto& stud : student) {
-        if (count >= n) break;
-        out << left << setw(15) << stud.vardas
-            << left << setw(20) << stud.pavarde
-            << left << setw(18) << fixed << setprecision(2) << stud.galutinisvid
-            << left << setw(18) << fixed << setprecision(2) << stud.galutinismed << endl;
-        count++;
     }
 }
 void generavimas(int n,string m)
