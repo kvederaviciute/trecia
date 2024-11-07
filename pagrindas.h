@@ -9,7 +9,6 @@
 #include <cstdlib>
 #include <fstream>
 #include <chrono>
-#include <list>
 
 using std::endl;
 using std::cout;
@@ -25,6 +24,5 @@ using std::rand;
 using std::ifstream;
 using std::istringstream;
 using std::ofstream;
-using std::list;
 
 #endif // PAGRINDAS_H_INCLUDED
