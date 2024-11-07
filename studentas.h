@@ -15,7 +15,6 @@ void namudarbaibe(Stud & student, int & m);
 void namudarbaisu(Stud & student, int m);
 void valymas(Stud & student);
 void isvedimasgal(vector<Stud> student,int n,string m);
-void isvedimasgall(list<Stud> student,int n,string m);
 void generavimas(int n,string m);
 
 #endif // STUDENTAS_H_INCLUDED
