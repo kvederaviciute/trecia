@@ -9,8 +9,6 @@ void galutinisvid(Stud & student);
 void mediana(Stud & student, int m);
 void galutinismed(Stud & student);
 void rikiavimas(vector<Stud>& studentai);
-void rikiavimasl(list<Stud>& studentai);
 void skirstymas(vector<Stud> s, vector<Stud>& k, vector<Stud>& v);
-void skirstymasl(list<Stud> s, list<Stud>& k, list<Stud>& v);
 
 #endif // SKAICIAVIMAI_H_INCLUDED
