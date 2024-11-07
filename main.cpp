@@ -7,7 +7,7 @@ int main()
     Stud laikinas;
     string failas, eilute;
     int n, a, m=0,nd;
-    vector<Stud> studentai, vargsiukai, kietiakai;
+    vector<Stud> studentai, vargsiukai;
 
     cout<<"Ar norite generuoti failus?(0 - ne, 1 - taip): ";
     cin>>a;
@@ -19,11 +19,7 @@ int main()
     else if(a==1)
     {
         srand(time(0));
-        generavimas(1000, "studentai_1000.txt");
-        generavimas(10000, "studentai_10000.txt");
         generavimas(100000, "studentai_100000.txt");
-        generavimas(1000000, "studentai_1000000.txt");
-        generavimas(10000000, "studentai_10000000.txt");
     }
     cout<<"Ar duomenis norite nuskaityti is failo? (0 - ne, 1 - taip): ";
     cin>>a;
@@ -117,7 +113,7 @@ int main()
     std::chrono::duration<double> duration = stop - start;
     cout<<"studentu duomenu rikiavimo laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
     start = std::chrono::high_resolution_clock::now();
-    skirstymas(studentai,kietiakai,vargsiukai);
+    skirstymas(studentai,vargsiukai);
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
     if(!failas.empty())
@@ -129,74 +125,18 @@ int main()
         cout<<"studentu skirstymo i dvi grupes laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
     }
     start = std::chrono::high_resolution_clock::now();
-    isvedimasgal(studentai, n, "studentai.txt");
+    isvedimasgal(studentai, studentai.size(), "kietiakai.txt");
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
     if(!failas.empty())
     {
-        cout<<failas<<" failo studentu duomenu isvedimo i faila studentai.txt laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
+        cout<<failas<<" failo studentu duomenu isvedimo i faila kietiakai.txt laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
     }
     else
     {
-        cout<<"studentu duomenu isvedimo i faila studentai.txt laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
+        cout<<"studentu duomenu isvedimo i faila kietiakai.txt laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
     }
-    cout<<"Studentai konteineryje vector uzima tiek vietos:  "<<sizeof(studentai)<<" bitus"<<endl;
-    isvedimasgal(kietiakai, kietiakai.size(), "kietiakai.txt");
-    isvedimasgal(vargsiukai, vargsiukai.size(), "vargsiukai.txt");
-    cout<<"Failai isvesti";
-    return 0;
-}
-
-    start = std::chrono::high_resolution_clock::now();
-    skirstymasl(studentail,kietiakail,vargsiukail);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = stop - start;
-    if(!failas.empty())
-    {
-        cout<<failas<<" failo studentu skirstymo i dvi grupes laikas(list): "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-    else
-    {
-        cout<<"studentu skirstymo i dvi grupes laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-
-    rikiavimas(kietiakai);
-    rikiavimas(vargsiukai);
-    start = std::chrono::high_resolution_clock::now();
-    rikiavimas(studentai);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = stop - start;
-    cout<<"studentu duomenu rikiavimo laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    start = std::chrono::high_resolution_clock::now();
-    rikiavimasl(studentail);
-    stop = std::chrono::high_resolution_clock::now();
-    duration = stop - start;
-    cout<<"studentu duomenu rikiavimo laikas(list): "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    start = std::chrono::high_resolution_clock::now();
-    isvedimasgal(studentai, n, "studentai.txt");
-    stop = std::chrono::high_resolution_clock::now();
-    duration = stop - start;
-    if(!failas.empty())
-    {
-        cout<<failas<<" failo studentu duomenu isvedimo i faila studentai.txt laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-    else
-    {
-        cout<<"studentu duomenu isvedimo i faila studentai.txt laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-        start = std::chrono::high_resolution_clock::now();
-    isvedimasgall(studentail, n, "studentail.txt");
-    stop = std::chrono::high_resolution_clock::now();
-    duration = stop - start;
-    if(!failas.empty())
-    {
-        cout<<failas<<" failo studentu duomenu isvedimo i faila studentai.txt laikas(list): "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-    else
-    {
-        cout<<"studentu duomenu isvedimo i faila studentai.txt laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-    isvedimasgal(kietiakai, kietiakai.size(), "kietiakai.txt");
+    cout<<"konteineriai uzima tiek vietos:  "<<sizeof(studentai)+sizeof(vargsiukai)<<" bitus"<<endl;
     isvedimasgal(vargsiukai, vargsiukai.size(), "vargsiukai.txt");
     cout<<"Failai isvesti";
     return 0;
