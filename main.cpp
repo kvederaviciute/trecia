@@ -1,7 +1,7 @@
 #include "studentas.h"
 
 int main() {
-    std::vector<Student> studentai, vargsiukai;
+    std::vector<Student> studentai, vargsiukai, kietiakai;
     Student laikinas;
     std::string failas, eilute;
     int n = 0, a = 0, m = 0, nd = 0;
@@ -86,7 +86,9 @@ int main() {
     std::chrono::duration<double> duration = stop - start;
     std::cout << "Studentu duomenu rikiavimo laikas (vector): " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
     start = std::chrono::high_resolution_clock::now();
-    Student::Skirstymas(studentai, vargsiukai);
+    //Student::Skirstymas1(studentai, vargsiukai,kietiakai);
+    Student::Skirstymas2(studentai, vargsiukai);
+    //Student::Skirstymas3(studentai, vargsiukai);
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
     if (!failas.empty()) {
@@ -96,6 +98,7 @@ int main() {
     }
 
     start = std::chrono::high_resolution_clock::now();
+    //laikinas.Isvedimas(kietiakai, "kietiakai.txt");
     laikinas.Isvedimas(studentai, "kietiakai.txt");
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
@@ -104,9 +107,19 @@ int main() {
     } else {
         std::cout << "Studentu duomenu isvedimo i faila kietiakai.txt laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
     }
-
+    start = std::chrono::high_resolution_clock::now();
     laikinas.Isvedimas(vargsiukai, "vargsiukai.txt");
+    stop = std::chrono::high_resolution_clock::now();
+    duration = stop - start;
+    if (!failas.empty()) {
+        std::cout << failas << " failo studentu duomenu isvedimo i faila vargsiukai.txt laikas (vector): " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
+    } else {
+        std::cout << "Studentu duomenu isvedimo i faila vargsiukai.txt laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
+    }
     std::cout << "Failai isvesti" << std::endl;
 
+    std::cout << "Paspauskite bet kuri klavisa, kad uzdarytumete programa..." << std::endl;
+std::cin.get();
+std::cin.get();
     return 0;
 }
