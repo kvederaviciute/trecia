@@ -43,7 +43,9 @@ public:
     void clearData();
 
     static void Rikiavimas(std::vector<Student>& studentai);
-    static void Skirstymas(std::vector<Student>& studentai, std::vector<Student>& vargsiukai);
+    static void Skirstymas1(std::vector<Student>& studentai, std::vector<Student>& vargsiukai, std::vector<Student>& kietiakai);
+    static void Skirstymas2(std::vector<Student>& studentai, std::vector<Student>& vargsiukai);
+    static void Skirstymas3(std::vector<Student>& studentai, std::vector<Student>& vargsiukai);
 };
 
 #endif // STUDENTAS_H_INCLUDED
