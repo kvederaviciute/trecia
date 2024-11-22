@@ -1,14 +1,20 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(v1.0vector)
+project(StudentProject)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-file(GLOB SOURCES "src/*.cpp")
-file(GLOB HEADERS "include/*.h")
+set(CMAKE_CXX_FLAGS_DEBUG "/Zi")
+set(CMAKE_CXX_FLAGS_RELEASE "/01")
 
-include_directories("${CMAKE_SOURCE_DIR}/include")
+add_executable(${PROJECT_NAME}
+    main.cpp
+    studentas.cpp
+    studentas.h 
+    pagrindas.h
+)
 
-add_executable(v1.0 ${SOURCES})
-
-target_include_directories(v1.0 PRIVATE "${CMAKE_SOURCE_DIR}/include")
+target_include_directories(${PROJECT_NAME} PRIVATE
+    ${CMAKE_SOURCE_DIR}
+)
