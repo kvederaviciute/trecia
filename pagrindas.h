@@ -9,6 +9,9 @@
 #include <cstdlib>
 #include <fstream>
 #include <chrono>
+#include <algorithm>
+#include <sstream>
+#include <numeric>
 
 using std::endl;
 using std::cout;
