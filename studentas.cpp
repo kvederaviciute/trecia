@@ -133,12 +133,32 @@ void Student::Rikiavimas(std::vector<Student>& studentai) {
     });
 }
 
-void Student::Skirstymas(std::vector<Student>& studentai, std::vector<Student>& vargsiukai) {
+void Student::Skirstymas1(std::vector<Student>& studentai, std::vector<Student>& vargsiukai, std::vector<Student>& kietiakai) {
+    for(int i=0; i<studentai.size(); i++)
+    {
+        if(studentai.at(i).galutinisvid<5)
+        {
+            vargsiukai.push_back(studentai.at(i));
+        }
+        else
+        {
+            kietiakai.push_back(studentai.at(i));
+        }
+    }
+}
+void Student::Skirstymas2(std::vector<Student>& studentai, std::vector<Student>& vargsiukai) {
     auto it = std::remove_if(studentai.begin(), studentai.end(), [](const Student& student) {
         return student.galutinisvid < 5.0;
     });
 
     vargsiukai.insert(vargsiukai.end(), it, studentai.end());
+    studentai.erase(it, studentai.end());
+}
+void Student::Skirstymas3(std::vector<Student>& studentai, std::vector<Student>& vargsiukai) {
+    auto it = std::partition(studentai.begin(), studentai.end(), [](const Student& student) {
+        return student.galutinisvid >= 5;
+    });
+    vargsiukai.assign(it, studentai.end());
     studentai.erase(it, studentai.end());
 }
 void Student::Vidurkis() {
