@@ -1,143 +1,112 @@
-#include "pagrindas.h"
 #include "studentas.h"
-#include "skaiciavimai.h"
 
-int main()
-{
-    Stud laikinas;
-    string failas, eilute;
-    int n, a, m=0,nd;
-    vector<Stud> studentai, vargsiukai;
+int main() {
+    std::vector<Student> studentai, vargsiukai;
+    Student laikinas;
+    std::string failas, eilute;
+    int n = 0, a = 0, m = 0, nd = 0;
 
-    cout<<"Ar norite generuoti failus?(0 - ne, 1 - taip): ";
-    cin>>a;
-    if(std::cin.fail())
-    {
-        cout<<"Netinkamas simbolis"<<endl;
-        return(0);
+    std::cout << "Ar duomenis norite nuskaityti is failo? (0 - ne, 1 - taip): ";
+    std::cin >> a;
+    if (std::cin.fail()) {
+        std::cout << "Netinkamas simbolis" << std::endl;
+        return 0;
     }
-    else if(a==1)
-    {
-        srand(time(0));
-        generavimas(100000, "studentai_100000.txt");
-    }
-    cout<<"Ar duomenis norite nuskaityti is failo? (0 - ne, 1 - taip): ";
-    cin>>a;
-    if(std::cin.fail())
-    {
-        cout<<"Netinkamas simbolis"<<endl;
-        return(0);
-    }
-    else if(a==0)
-    {
-        cout<<"Kiek studentu yra jusu kurse?: ";
-        cin>>n;
-        if(std::cin.fail())
-        {
-            cout<<"Netinkamas simbolis"<<endl;
-            return(0);
+
+    if (a == 0) {
+        std::cout << "Kiek studentu yra jusu kurse?: ";
+        std::cin >> n;
+        if (std::cin.fail()) {
+            std::cout << "Netinkamas simbolis" << std::endl;
+            return 0;
         }
-        else
-        {
-            for(int i=0; i<n; i++)
-            {
-                cout<<"Iveskite studento duomenis: "<<endl;
-                ivedimas(laikinas, m);
-                studentai.push_back(laikinas);
-                valymas(laikinas);
-            }
+        for (int i = 0; i < n; i++) {
+            std::cout << "Iveskite studento duomenis: " << std::endl;
+                laikinas.Ivedimas(m, false);
+            studentai.push_back(laikinas);
         }
-    }
-    else if(a==1)
-    {
+    } else if (a == 1) {
         bool failas_perskaitytas = false;
 
-        while(!failas_perskaitytas)
-        {
-            n, m, a, nd = 0;
-            cout<<"Iveskite failo pavadinima formatu pavadinimas.txt: ";
-            cin>>failas;
-            try
-            {
-                auto start = std::chrono::high_resolution_clock::now();
-                ifstream in(failas);
-                if(!in)
-                {
-                    cout<<"failas nerastas"<<endl;
-                    return(0);
-                }
-                else
-                {
-                    getline(in, eilute);
-                    while (getline(in, eilute))
-                    {
-                        istringstream iss(eilute);
+        while (!failas_perskaitytas) {
+            std::cout << "Iveskite failo pavadinima formatu pavadinimas.txt: ";
+            std::cin >> failas;
 
-                        iss >> laikinas.vardas >> laikinas.pavarde;
-                        while (iss >> nd)
-                        {
-                            laikinas.ND.push_back(nd);
+            try {
+                auto start = std::chrono::high_resolution_clock::now();
+                std::ifstream in(failas);
+                if (!in) {
+                    std::cout << "Failas nerastas" << std::endl;
+                    return 0;
+                } else {
+                    std::getline(in, eilute);
+                    while (std::getline(in, eilute)) {
+                        std::istringstream iss(eilute);
+                        std::string vardas, pavarde;
+                        std::vector<int> ND;
+                        int egzaminas;
+
+                        iss >> vardas >> pavarde;
+                        while (iss >> nd) {
+                            ND.push_back(nd);
                         }
-                        laikinas.egzaminas = laikinas.ND.back();
-                        laikinas.ND.pop_back();
-                        studentai.push_back(laikinas);
-                        valymas(laikinas);
+                        egzaminas = ND.back();
+                        ND.pop_back();
+
+                        Student student(vardas, pavarde);
+                        for (int grade : ND) student.addNamudarbai(grade);
+                        student.setEgzaminas(egzaminas);
+                        studentai.push_back(student);
                     }
                 }
                 in.close();
                 failas_perskaitytas = true;
+
                 auto stop = std::chrono::high_resolution_clock::now();
                 std::chrono::duration<double> duration = stop - start;
-                cout<<failas<<" failo nuskaitymo laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-            }
-            catch(std::exception& e)
-            {
-                cout<<"Klaida perskaitant faila"<<endl;
+                std::cout << failas << " failo nuskaitymo laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
+            } catch (std::exception& e) {
+                std::cout << "Klaida perskaitant faila" << std::endl;
             }
         }
-        m=studentai[0].ND.size();
-        n=studentai.size();
+        m = studentai[0].getVardas().size();
+        n = studentai.size();
     }
 
-
-    for(int i=0; i<n; i++)
-    {
-        vidurkis(studentai.at(i),m);
-        galutinisvid(studentai.at(i));
-        mediana(studentai.at(i),m);
-        galutinismed(studentai.at(i));
+    for (Student& student : studentai) {
+        student.Vidurkis();
+        student.GalutinisVid();
+        student.Mediana();
+        student.Galutinismed();
     }
+
     auto start = std::chrono::high_resolution_clock::now();
-    rikiavimas(studentai);
+    Student::Rikiavimas(studentai);
     auto stop = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> duration = stop - start;
-    cout<<"studentu duomenu rikiavimo laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
+    std::cout << "Studentu duomenu rikiavimo laikas (vector): " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
     start = std::chrono::high_resolution_clock::now();
-    skirstymas(studentai,vargsiukai);
+    Student::Skirstymas(studentai, vargsiukai);
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
-    if(!failas.empty())
-    {
-        cout<<failas<<" failo studentu skirstymo i dvi grupes laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
+    if (!failas.empty()) {
+        std::cout << failas << " failo studentu skirstymo i dvi grupes laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
+    } else {
+        std::cout << "Studentu skirstymo i dvi grupes laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
     }
-    else
-    {
-        cout<<"studentu skirstymo i dvi grupes laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
+
     start = std::chrono::high_resolution_clock::now();
-    isvedimasgal(studentai, studentai.size(), "kietiakai.txt");
+    laikinas.Isvedimas(studentai, "kietiakai.txt");
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
-    if(!failas.empty())
-    {
-        cout<<failas<<" failo studentu duomenu isvedimo i faila kietiakai.txt laikas(vector): "<<fixed<<setprecision(6)<<duration.count()<<endl;
+    if (!failas.empty()) {
+        std::cout << failas << " failo studentu duomenu isvedimo i faila kietiakai.txt laikas (vector): " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
+    } else {
+        std::cout << "Studentu duomenu isvedimo i faila kietiakai.txt laikas: " << std::fixed << std::setprecision(6) << duration.count() << std::endl;
     }
-    else
-    {
-        cout<<"studentu duomenu isvedimo i faila kietiakai.txt laikas: "<<fixed<<setprecision(6)<<duration.count()<<endl;
-    }
-    cout<<"konteineriai uzima tiek vietos:  "<<sizeof(studentai)+sizeof(vargsiukai)<<" bitus"<<endl;
-    isvedimasgal(vargsiukai, vargsiukai.size(), "vargsiukai.txt");
-    cout<<"Failai isvesti";
+
+    laikinas.Isvedimas(vargsiukai, "vargsiukai.txt");
+    std::cout << "Failai isvesti" << std::endl;
+
     return 0;
 }
