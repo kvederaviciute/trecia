@@ -190,3 +190,12 @@ void Student::Mediana() {
 void Student::Galutinismed() {
     galutinismed = 0.4 * mediana + 0.6 * egzaminas;
 }
+
+Student::Student(const std::string& vardas, const std::string& pavarde, double egzaminas)
+    : vardas(vardas), pavarde(pavarde), egzaminas(egzaminas) {}
+
+
+std::ostream& operator<<(std::ostream& os, const Student& student) {
+    os << "Vardas: " << student.vardas << ", Pavarde: " << student.pavarde << ", Egzaminas: " << student.egzaminas;
+    return os;
+}
