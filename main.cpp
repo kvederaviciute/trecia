@@ -118,6 +118,25 @@ int main() {
     }
     std::cout << "Failai isvesti" << std::endl;
 
+    Student abc1("ABC", "DEF", 10.0);
+    abc1.addNamudarbai(10);
+    abc1.addNamudarbai(9);
+    abc1.setEgzaminas(10);
+    std::cout << "abc1: " << abc1 << '\n';
+
+    Student abc2{abc1}; // Copy constructor
+    std::cout << "abc2 (copy of abc1): " << abc2 << '\n';
+
+    Student abc3("XYZ", "UVW", 5.0);
+    abc3.addNamudarbai(4);
+    abc3.addNamudarbai(6);
+    abc3.setEgzaminas(5);
+    std::cout << "abc3: " << abc3 << '\n';
+
+    abc3 = abc2; // Copy assignment
+    std::cout << "abc3 (after assignment from abc2): " << abc3 << '\n';
+
+
     std::cout << "Paspauskite bet kuri klavisa, kad uzdarytumete programa..." << std::endl;
 std::cin.get();
 std::cin.get();
