@@ -12,6 +12,7 @@
 #include <algorithm>
 #include <sstream>
 #include <numeric>
+#include <limits>
 
 using std::endl;
 using std::cout;
@@ -29,3 +30,4 @@ using std::istringstream;
 using std::ofstream;
 
 #endif // PAGRINDAS_H_INCLUDED
+
