@@ -12,7 +12,7 @@ public:
     Zmogus(const std::string& vardas, const std::string& pavarde)
         : vardas(vardas), pavarde(pavarde) {}
 
-    virtual ~Zmogus() = default; // Virtualus destruktorius
+    virtual ~Zmogus() = default; 
 
     // Getteriai
     std::string getVardas() const { return vardas; }
