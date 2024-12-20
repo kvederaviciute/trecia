@@ -8,10 +8,13 @@
 - Kopijavimo konstruktorius užtikrina taisyklingą duomenų kopijavimą.
 - Kopijavimo priskyrimo operatorius užtikrina, kad esami duomenys yra išvalomi prieš naujų duomenų kopijavimą."
 
-Taip atrodo visų "Rule of three" konstruktorių ir destruktorių realizacija:
-![image](https://github.com/user-attachments/assets/72ac1bc2-af2c-4e91-a555-786a31c9d6f0)
+Visi "Rule of three" metodai vis dar veikia:
+![image](https://github.com/user-attachments/assets/37488ed8-4c92-4000-8ffd-563d803a61f6)
 
-Pirmoje eilutėje sukuriamas pirmas studentas (vardas ir pavardė), antroje eilutėje yra naudojamas kopijavimo konstruktorius(taip sukuriamas 2 studentas), trečioje eilutėje sukuriamas 3 studentas, o ketvirtoje eilutėje yra naudojamas priskyrimo konstruktorius, kuris 3 studentui priskiria 2 studento reikšmę.
+
+Sukurta bazinė klasė Žmogus yra abstrakti:
+![image](https://github.com/user-attachments/assets/67b3da90-97ca-420a-9310-cd5c84d7aa8a)
+
 
 Naudojami įvesties būdai:
 - Rankiniu būdu: vartotojas pats įveda vardą, pavardę, namų darbus ir egzaminą.![image](https://github.com/user-attachments/assets/69cd4dbc-4a74-4ee1-8a28-3f9bb80c1ff3)
