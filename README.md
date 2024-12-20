@@ -41,3 +41,9 @@ Programos naudojimo instrukcija:
 - Jei ivedamas 0: 1. Prašoma įvesti 1-ųjų namų darbų rezultatą ir to pat klausia iki tol kol įvedate -1 (Klausimo sąlygoje tai paminima) 2. Tuomet prašoma įvesti egzamino rezultatą
 - Jei įvedamas 1: 1. Jei tai pirmas studentas, klausiama kiek namų darbų norima sugeneruoti: Ivedamas sveikas skaičius
 - Studentų įvedimo ciklas kartosis iki tol kol bus aprašyti visi studentai ir tuomet failai išvedami (kietiakai - studentai išlaikę dalyką, vargšiukai - studentai neišlaikę dalyko)
+
+Kompiuterio naudoto testavimui parametrai: 
+- CPU - 11th Gen Intel(R) Core(TM) i7-1165G7 @ 2.80GHz;
+- RAM - 16,0 GB
+- SSD - 512 GB
+- Operacinė sistema - Windows 11
