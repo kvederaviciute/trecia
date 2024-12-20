@@ -190,12 +190,28 @@ void Student::Mediana() {
 void Student::Galutinismed() {
     galutinismed = 0.4 * mediana + 0.6 * egzaminas;
 }
+// Copy Constructor
+Student::Student(const Student& other)
+    : vardas(other.vardas), pavarde(other.pavarde), ND(other.ND),
+      egzaminas(other.egzaminas), vidurkis(other.vidurkis),
+      mediana(other.mediana), galutinisvid(other.galutinisvid),
+      galutinismed(other.galutinismed) {}
 
-Student::Student(const std::string& vardas, const std::string& pavarde, double egzaminas)
-    : vardas(vardas), pavarde(pavarde), egzaminas(egzaminas) {}
+// Copy Assignment Operator
+Student& Student::operator=(const Student& other) {
+    if (this == &other) return *this; // Handle self-assignment
+    vardas = other.vardas;
+    pavarde = other.pavarde;
+    ND = other.ND;
+    egzaminas = other.egzaminas;
+    vidurkis = other.vidurkis;
+    mediana = other.mediana;
+    galutinisvid = other.galutinisvid;
+    galutinismed = other.galutinismed;
+    return *this;
+}
 
-
-std::ostream& operator<<(std::ostream& os, const Student& student) {
-    os << "Vardas: " << student.vardas << ", Pavarde: " << student.pavarde << ", Egzaminas: " << student.egzaminas;
-    return os;
+// Destructor
+Student::~Student() {
+    ND.clear();
 }
