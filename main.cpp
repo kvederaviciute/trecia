@@ -15,11 +15,9 @@ int main()
     s1.setEgzaminas(9);
     s1.printInfo();
 
-    // Copy constructor
     Student s2 = s1;
     s2.printInfo();
 
-    // Copy assignment
     Student s3("uvw", "xyz");
     s3.printInfo();
     s3 = s1;
