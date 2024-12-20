@@ -3,9 +3,31 @@
 
 #include "pagrindas.h"
 
-class Student {
-private:
+class Zmogus {
+protected:
     std::string vardas, pavarde;
+
+public:
+    Zmogus() : vardas("Nezinomas"), pavarde("Zmogaicius") {}
+    Zmogus(const std::string& vardas, const std::string& pavarde)
+        : vardas(vardas), pavarde(pavarde) {}
+
+    virtual ~Zmogus() = default; // Virtualus destruktorius
+
+    // Getteriai
+    std::string getVardas() const { return vardas; }
+    std::string getPavarde() const { return pavarde; }
+
+    // Setteriai
+    void setVardas(const std::string& vardas) { this->vardas = vardas; }
+    void setPavarde(const std::string& pavarde) { this->pavarde = pavarde; }
+
+    // Virtualus metodas
+    virtual void printInfo() const = 0; // Grynai virtualus metodas, užtikrina abstraktumą
+};
+
+class Student : public Zmogus {
+private:
     std::vector<int> ND;
     double egzaminas = 0;
     double vidurkis = 0;
@@ -14,29 +36,40 @@ private:
     double galutinismed = 0;
 
 public:
-     // Default Constructor
-    Student() : vardas("Nezinomas"), pavarde("Studentas") {}
-
-    // Parameterized Constructor
+    // Konstruktoriai
+    Student() : Zmogus() {}
     Student(const std::string& vardas, const std::string& pavarde)
-        : vardas(vardas), pavarde(pavarde) {}
+        : Zmogus(vardas, pavarde) {}
 
-    // Copy Constructor (Rule of Three)
-    Student(const Student& other);
+    // Destruktorius
+    ~Student() { ND.clear(); }
 
-    // Copy Assignment Operator (Rule of Three)
-    Student& operator=(const Student& other);
+    // Trejų metodų taisyklė
+    Student(const Student& other)
+        : Zmogus(other.vardas, other.pavarde), ND(other.ND), egzaminas(other.egzaminas),
+          vidurkis(other.vidurkis), mediana(other.mediana),
+          galutinisvid(other.galutinisvid), galutinismed(other.galutinismed) {}
 
-    // Destructor (Rule of Three)
-    ~Student();
+    Student& operator=(const Student& other) {
+        if (this != &other) {
+            vardas = other.vardas;
+            pavarde = other.pavarde;
+            ND = other.ND;
+            egzaminas = other.egzaminas;
+            vidurkis = other.vidurkis;
+            mediana = other.mediana;
+            galutinisvid = other.galutinisvid;
+            galutinismed = other.galutinismed;
+        }
+        return *this;
+    }
 
-    void setVardas(const std::string& vardas) { this->vardas = vardas; }
-    void setPavarde(const std::string& pavarde) { this->pavarde = pavarde; }
+    void printInfo() const override {
+        std::cout << "Vardas: " << vardas << ", Pavarde: " << pavarde << std::endl;
+    }
     void addNamudarbai(int nd) { ND.push_back(nd); }
     void setEgzaminas(double egzaminas) { this->egzaminas = egzaminas; }
 
-    std::string getVardas() const { return vardas; }
-    std::string getPavarde() const { return pavarde; }
     double getGalutinisVid() const { return galutinisvid; }
     double getGalutinisMed() const { return galutinismed; }
 
